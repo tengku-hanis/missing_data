@@ -1,0 +1,32 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Missing data: A practical guide on handling it with R"
+  author: "Tengku Muhammad Hanis Bin Tengku Mokhtar, PhD"
+  date: today
+  date-format: "MMM D, YYYY"
+  cover-image: images/book_cover.png
+  favicon: images/thumbnail.png
+  chapters:
+    - index.qmd
+    - about.qmd
+    - intro.qmd
+    - type.qmd
+    - na-r.qmd
+    - solutions.qmd
+    - best-practises.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
