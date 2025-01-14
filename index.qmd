@@ -6,7 +6,7 @@
 
 > Statistics is a missing-data problem.
 >
-> -- Roderick J A Little
+> -- Roderick J. A. Little
 
 This book is intended as a practical guide for those involved in applied research. When navigating research projects, we often encounter missing data. During my master's studies, I vividly remember being cautioned to be very careful with missing data. However, at the time, I found it unclear what steps to take when faced with missing data.
 
