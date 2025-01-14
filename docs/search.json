@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Missing data: A practical guide on handling it with R",
     "section": "",
-    "text": "Welcome\n\n\n\n\n\n\nThis book is in its early drafting stages; many portions of the book are unfinished and all of it will go through significant revision and refinement.",
+    "text": "Welcome\n\n\n\n\n\n\nThis book is in its early drafting stages; many portions of the book are unfinished and all of it will go through significant revision and refinement.\n\n\n\n\n\n\n\nStatistics is a missing-data problem.\n– Roderick J A Little\n\nThis book is intended as a practical guide for those involved in applied research. When navigating research projects, we often encounter missing data. During my master’s studies, I vividly remember being cautioned to be very careful with missing data. However, at the time, I found it unclear what steps to take when faced with missing data.\nOver the years, I have learned through various resources how to handle missing data effectively. Among these, Stef van Buuren’s book, Flexible Imputation of Missing Data, has been particularly invaluable. I am truly grateful that he made the book freely available online, allowing countless researchers, including myself, to benefit from his expertise.\nThis book is my humble attempt not only to consolidate my understanding of this crucial topic but also to provide a practical guideline on how to handle missing data. My hope is that others will find this work beneficial. As mentioned in the hadith:\n\n\n\n\n\n\nOn the authority of Abu Hurairah (ra) that the Messenger of Allah (saw) said, ‘When a person dies, his deeds come to an end except for three: Sadaqah Jariyah (a continuous charity), or knowledge from which benefit is gained, or a righteous child who prays for him’. (Muslim)\n\n\n\nFinally, I would like to express my deepest gratitude to my lovely wife, Nurul Asmaq, my parents, Tengku Mokhtar and Nor Malaysia, and my in-laws, Mazalan and Salmeh, for their unwavering understanding and support. Writing this book has meant sacrificing time I would otherwise spend with them. While they may not fully share my obsession with R and data analysis (especially my wife!), they have supported me at every step of this journey. Their patience and encouragement have been my anchor throughout this process.\nTo all readers, I sincerely hope that this book helps demystify the challenges of missing data and empowers you to approach your research with confidence.\nTengku Muhammad Hanis Bin Tengku Mokhtar, PhD",
     "crumbs": [
       "Welcome"
     ]
@@ -24,39 +24,29 @@
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "1.1 Brief history of missing data\nDuring the early days (Pre-20th Century), there was a lack of systematic methods to address and handle missing data. These incomplete observations are either ignored or removed completely. A few methods that were utilised include making educated guesses and substitution with the average values.\nLater on (20th Century) as probability theory and statistical methods began to be established, methods such as listwise deletion (exclude the observation with a missing value) and pairwise deletion (using a complete observation for each of the analyses) were commonly utilised. However, both methods were heavily criticised and for a good reason too! Additionally, during this period statisticians began to hypothesise about the concept of missing data. Thus, the terms such as MCAR, MAR, and MNAR were formalised and proposed.\nIn 1976, Donald B. Rubin published his work in which he introduced the early framework on missing data which was later, more commonly known as the Rubin Causal Model (Rubin 1976; Imbens and Rubin 2010). Rubin’s work not only served as a foundation in this field but further solidified the terms such as MCAR, MAR, and MNAR. Subsequently, in 1987, two important books on missing data were published: Statistical Analysis with Missing Data (Little and Rubin 2019) and Multiple Imputation for Nonresponse in Surveys (Rubin 1987). The former was authored by Roderick J. A. Little and Donal B. Rubin, and the latter was authored by Donald B. Rubin. Both are seasoned experts in this field.\nNowadays, with the development of statistical software especially open-source statistical programming software such as R, any missing data techniques even the advanced ones are easily accessible to researchers. The understanding of missing data has become pivotal with the exploded application of machine learning and big data analytics.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
-    "objectID": "type.html",
-    "href": "type.html",
-    "title": "2  Type of missing data",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "objectID": "intro.html#impacts-of-missing-data",
+    "href": "intro.html#impacts-of-missing-data",
+    "title": "1  Introduction",
+    "section": "1.2 Impacts of missing data",
+    "text": "1.2 Impacts of missing data\nMissing data, if left untreated and ignored, will significantly affect the results of a study and, subsequently, the overall integrity of the research. Its presence can disrupt the reliability of findings and hinder the ability to draw meaningful conclusions.\n\nReduction in statistical power.\nMissing data reduces the sample size, thereby lowering its statistical power to detect any meaningful results. This diminished power makes it harder to identify true effects or associations within the data. Additionally, a small sample size increases the likelihood of false negatives (Type II errors), where meaningful effects are overlooked. In extreme cases, missing data may render certain analyses impossible due to insufficient data points.\nIntroduction of bias and distortion of estimates.\nIf the missingness is not random, there is a high possibility of bias and distortion in the results. For example, participants may refuse to report their weight because they feel embarrassed, leading to a dataset that only includes those who are normal or underweight. Consequently, the study may draw erroneous conclusions, such as underestimating the prevalence of obesity. Bias introduced by missing data can mislead researchers and policymakers, potentially resulting in ineffective or harmful interventions.\nCompromised generalisability and loss of information.\nMissing data may compromise the generalizability of a study, especially if certain groups or subpopulations are disproportionately affected. For example, missing responses from marginalized communities may exclude their perspectives, limiting the applicability of findings. The loss of information not only reduces the completeness of the dataset but also diminishes the richness of insights that could have been derived.\nIncreased complexity of analysis.\nAddressing missing data often involves complex solutions, such as multiple imputation, maximum likelihood estimation, or model-based approaches. These methods, while appropriate, require researchers to make specific assumptions, such as ignorability of the missing data mechanism. Decisions about parameters, such as the number of iterations and imputations, add layers of complexity to both the analysis and the interpretation of results. This complexity increases the potential for errors and misinterpretations, especially for researchers unfamiliar with advanced statistical techniques.\nImpact on replicability.\nDifferent researchers may adopt varied approaches to handle missing data, which can lead to different conclusions from the same dataset. For example, one researcher might use multiple imputation, while another opts for listwise deletion. This inconsistency makes replicability challenging and undermines the reliability of findings across studies. To mitigate this, sensitivity analyses are often necessary to assess how different methods of handling missing data affect the results, adding yet another layer of analytical effort.\n\nThe impacts of missing data extend beyond those listed above. It complicates collaboration, delays project timelines, and may increase the cost of research due to the need for advanced tools and expertise. Missing data also introduces uncertainty in findings, which can reduce the confidence of stakeholders, such as policymakers or funders, in the study’s conclusions.\nIn summary, missing data affects research at multiple levels, making analysis and result interpretation more challenging and less straightforward. Researchers must take proactive measures, such as designing robust data collection protocols and employing appropriate statistical techniques, to mitigate its impacts and preserve the integrity of their studies.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Type of missing data</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
-    "objectID": "na-r.html",
-    "href": "na-r.html",
-    "title": "3  Missing data in R",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "objectID": "intro.html#chapter-summary",
+    "href": "intro.html#chapter-summary",
+    "title": "1  Introduction",
+    "section": "1.3 Chapter summary",
+    "text": "1.3 Chapter summary\nIn this chapter, we explore a brief history of missing data and examine the significant impacts that missing data can have on research.\n\n\n\n\nImbens, Guido W., and Donald B. Rubin. 2010. “Rubin Causal Model.” In Microeconometrics, edited by Steven N. Durlauf and Lawrence E. Blume, 229–41. London: Palgrave Macmillan UK. https://doi.org/10.1057/9780230280816_28.\n\n\nLittle, Roderick JA, and Donald B Rubin. 2019. Statistical Analysis with Missing Data. Vol. 793. John Wiley & Sons.\n\n\nRubin, Donald B. 1976. “Inference and Missing Data.” Biometrika 63 (3): 581–92.\n\n\n———. 1987. Multiple Imputation for Nonresponse in Surveys. John Wiley & Sons.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Missing data in R</span>"
-    ]
-  },
-  {
-    "objectID": "solutions.html",
-    "href": "solutions.html",
-    "title": "4  Solutions",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Solutions</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
@@ -64,19 +54,9 @@
     "href": "best-practises.html",
     "title": "5  Best practises",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "This is a book created from markdown and executable code.\nSee (knuth84?) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Best practises</span>"
-    ]
-  },
-  {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "6  Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary</span>"
     ]
   },
   {
@@ -84,7 +64,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "Imbens, Guido W., and Donald B. Rubin. 2010. “Rubin Causal\nModel.” In Microeconometrics, edited by Steven N.\nDurlauf and Lawrence E. Blume, 229–41. London: Palgrave Macmillan UK. https://doi.org/10.1057/9780230280816_28.\n\n\nLittle, Roderick JA, and Donald B Rubin. 2019. Statistical Analysis\nwith Missing Data. Vol. 793. John Wiley & Sons.\n\n\nRubin, Donald B. 1976. “Inference and Missing Data.”\nBiometrika 63 (3): 581–92.\n\n\n———. 2004. Multiple Imputation for Nonresponse in Surveys. Vol.\n81. John Wiley & Sons.",
     "crumbs": [
       "References"
     ]

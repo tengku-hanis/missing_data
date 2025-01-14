@@ -1,9 +1,55 @@
 # Introduction
 
-This is a book created from markdown and executable code.
+> Incomplete data leads to incomplete conclusion.
+>
+> -- Henry H. Neff
 
-See @knuth84 for additional discussion of literate programming.
+Missing data refers to any value that is absent during the data collection process. It is a common issue in scientific research, whether utilizing primary or secondary data, and can significantly impact the validity and reliability of research findings. Missing data may arise due to various reasons, such as participant non-response, technical errors, or incomplete records.
 
-```{r}
-1 + 1
-```
+To address this issue, it is essential to plan for it proactively by implementing strategies to minimize its occurrence during the data collection phase. For instance, researchers can design user-friendly surveys, conduct thorough pilot tests, and ensure robust data entry protocols.
+
+When missing data does occur, employing appropriate handling techniques, such as imputation methods, sensitivity analyses, or robust statistical models, is critical to mitigate its impact on the results. Understanding the nature and mechanism of the missing data—whether it is Missing Completely at Random (MCAR), Missing at Random (MAR), or Missing Not at Random (MNAR)—can guide researchers in choosing the best approach to address the issue. We going to cover this topic in the subsequent chapter.
+
+By taking a systematic approach to both prevention and resolution, researchers can ensure that missing data does not undermine the integrity of their study.
+
+## Brief history of missing data
+
+During the early days (Pre-20th Century), there was a lack of systematic methods to address and handle missing data. These incomplete observations are either ignored or removed completely. A few methods that were utilised include making educated guesses and substitution with the average values.
+
+Later on (20th Century) as probability theory and statistical methods began to be established, methods such as listwise deletion (exclude the observation with a missing value) and pairwise deletion (using a complete observation for each of the analyses) were commonly utilised. However, both methods were heavily criticised and for a good reason too! Additionally, during this period statisticians began to hypothesise about the concept of missing data. Thus, the terms such as MCAR, MAR, and MNAR were formalised and proposed.
+
+In 1976, Donald B. Rubin published his work in which he introduced the early framework on missing data which was later, more commonly known as the Rubin Causal Model [@rubin1976inference; @Imbens2010]. Rubin's work not only served as a foundation in this field but further solidified the terms such as MCAR, MAR, and MNAR. Subsequently, in 1987, two important books on missing data were published: Statistical Analysis with Missing Data [@little2019statistical] and Multiple Imputation for Nonresponse in Surveys [@rubin1987]. The former was authored by Roderick J. A. Little and Donal B. Rubin, and the latter was authored by Donald B. Rubin. Both are seasoned experts in this field.
+
+Nowadays, with the development of statistical software especially open-source statistical programming software such as R, any missing data techniques even the advanced ones are easily accessible to researchers. The understanding of missing data has become pivotal with the exploded application of machine learning and big data analytics.
+
+## Impacts of missing data
+
+Missing data, if left untreated and ignored, will significantly affect the results of a study and, subsequently, the overall integrity of the research. Its presence can disrupt the reliability of findings and hinder the ability to draw meaningful conclusions.
+
+1.  Reduction in statistical power.
+
+    Missing data reduces the sample size, thereby lowering its statistical power to detect any meaningful results. This diminished power makes it harder to identify true effects or associations within the data. Additionally, a small sample size increases the likelihood of false negatives (Type II errors), where meaningful effects are overlooked. In extreme cases, missing data may render certain analyses impossible due to insufficient data points.
+
+2.  Introduction of bias and distortion of estimates.
+
+    If the missingness is not random, there is a high possibility of bias and distortion in the results. For example, participants may refuse to report their weight because they feel embarrassed, leading to a dataset that only includes those who are normal or underweight. Consequently, the study may draw erroneous conclusions, such as underestimating the prevalence of obesity. Bias introduced by missing data can mislead researchers and policymakers, potentially resulting in ineffective or harmful interventions.
+
+3.  Compromised generalisability and loss of information.
+
+    Missing data may compromise the generalizability of a study, especially if certain groups or subpopulations are disproportionately affected. For example, missing responses from marginalized communities may exclude their perspectives, limiting the applicability of findings. The loss of information not only reduces the completeness of the dataset but also diminishes the richness of insights that could have been derived.
+
+4.  Increased complexity of analysis.
+
+    Addressing missing data often involves complex solutions, such as multiple imputation, maximum likelihood estimation, or model-based approaches. These methods, while appropriate, require researchers to make specific assumptions, such as ignorability of the missing data mechanism. Decisions about parameters, such as the number of iterations and imputations, add layers of complexity to both the analysis and the interpretation of results. This complexity increases the potential for errors and misinterpretations, especially for researchers unfamiliar with advanced statistical techniques.
+
+5.  Impact on replicability.
+
+    Different researchers may adopt varied approaches to handle missing data, which can lead to different conclusions from the same dataset. For example, one researcher might use multiple imputation, while another opts for listwise deletion. This inconsistency makes replicability challenging and undermines the reliability of findings across studies. To mitigate this, sensitivity analyses are often necessary to assess how different methods of handling missing data affect the results, adding yet another layer of analytical effort.
+
+The impacts of missing data extend beyond those listed above. It complicates collaboration, delays project timelines, and may increase the cost of research due to the need for advanced tools and expertise. Missing data also introduces uncertainty in findings, which can reduce the confidence of stakeholders, such as policymakers or funders, in the study's conclusions.
+
+In summary, missing data affects research at multiple levels, making analysis and result interpretation more challenging and less straightforward. Researchers must take proactive measures, such as designing robust data collection protocols and employing appropriate statistical techniques, to mitigate its impacts and preserve the integrity of their studies.
+
+## Chapter summary
+
+In this chapter, we explore a brief history of missing data and examine the significant impacts that missing data can have on research.

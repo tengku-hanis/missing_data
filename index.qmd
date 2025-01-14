@@ -3,3 +3,23 @@
 ::: callout-warning
 ## This book is in its early drafting stages; many portions of the book are unfinished and all of it will go through significant revision and refinement.
 :::
+
+> Statistics is a missing-data problem.
+>
+> -- Roderick J A Little
+
+This book is intended as a practical guide for those involved in applied research. When navigating research projects, we often encounter missing data. During my master's studies, I vividly remember being cautioned to be very careful with missing data. However, at the time, I found it unclear what steps to take when faced with missing data.
+
+Over the years, I have learned through various resources how to handle missing data effectively. Among these, Stef van Buuren's book, [Flexible Imputation of Missing Data](https://stefvanbuuren.name/fimd/), has been particularly invaluable. I am truly grateful that he made the book freely available online, allowing countless researchers, including myself, to benefit from his expertise.
+
+This book is my humble attempt not only to consolidate my understanding of this crucial topic but also to provide a practical guideline on how to handle missing data. My hope is that others will find this work beneficial. As mentioned in the hadith:
+
+::: {.callout-tip appearance="simple" icon="false"}
+On the authority of Abu Hurairah (ra) that the Messenger of Allah (saw) said, ‘When a person dies, his deeds come to an end except for three: Sadaqah Jariyah (a continuous charity), or knowledge from which benefit is gained, or a righteous child who prays for him’. (Muslim)
+:::
+
+Finally, I would like to express my deepest gratitude to my lovely wife, Nurul Asmaq, my parents, Tengku Mokhtar and Nor Malaysia, and my in-laws, Mazalan and Salmeh, for their unwavering understanding and support. Writing this book has meant sacrificing time I would otherwise spend with them. While they may not fully share my obsession with R and data analysis (especially my wife!), they have supported me at every step of this journey. Their patience and encouragement have been my anchor throughout this process.
+
+To all readers, I sincerely hope that this book helps demystify the challenges of missing data and empowers you to approach your research with confidence.
+
+[Tengku Muhammad Hanis Bin Tengku Mokhtar, PhD](https://tengkuhanis.netlify.app/)

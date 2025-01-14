@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -220,8 +186,16 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#brief-history-of-missing-data" id="toc-brief-history-of-missing-data" class="nav-link active" data-scroll-target="#brief-history-of-missing-data"><span class="header-section-number">1.1</span> Brief history of missing data</a></li>
+  <li><a href="#impacts-of-missing-data" id="toc-impacts-of-missing-data" class="nav-link" data-scroll-target="#impacts-of-missing-data"><span class="header-section-number">1.2</span> Impacts of missing data</a></li>
+  <li><a href="#chapter-summary" id="toc-chapter-summary" class="nav-link" data-scroll-target="#chapter-summary"><span class="header-section-number">1.3</span> Chapter summary</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -245,21 +219,59 @@ div.csl-indent {
 </header>
 
 
-<p>This is a book created from markdown and executable code.</p>
-<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<blockquote class="blockquote">
+<p>Incomplete data leads to incomplete conclusion.</p>
+<p>– Henry H. Neff</p>
+</blockquote>
+<p>Missing data refers to any value that is absent during the data collection process. It is a common issue in scientific research, whether utilizing primary or secondary data, and can significantly impact the validity and reliability of research findings. Missing data may arise due to various reasons, such as participant non-response, technical errors, or incomplete records.</p>
+<p>To address this issue, it is essential to plan for it proactively by implementing strategies to minimize its occurrence during the data collection phase. For instance, researchers can design user-friendly surveys, conduct thorough pilot tests, and ensure robust data entry protocols.</p>
+<p>When missing data does occur, employing appropriate handling techniques, such as imputation methods, sensitivity analyses, or robust statistical models, is critical to mitigate its impact on the results. Understanding the nature and mechanism of the missing data—whether it is Missing Completely at Random (MCAR), Missing at Random (MAR), or Missing Not at Random (MNAR)—can guide researchers in choosing the best approach to address the issue. We going to cover this topic in the subsequent chapter.</p>
+<p>By taking a systematic approach to both prevention and resolution, researchers can ensure that missing data does not undermine the integrity of their study.</p>
+<section id="brief-history-of-missing-data" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="brief-history-of-missing-data"><span class="header-section-number">1.1</span> Brief history of missing data</h2>
+<p>During the early days (Pre-20th Century), there was a lack of systematic methods to address and handle missing data. These incomplete observations are either ignored or removed completely. A few methods that were utilised include making educated guesses and substitution with the average values.</p>
+<p>Later on (20th Century) as probability theory and statistical methods began to be established, methods such as listwise deletion (exclude the observation with a missing value) and pairwise deletion (using a complete observation for each of the analyses) were commonly utilised. However, both methods were heavily criticised and for a good reason too! Additionally, during this period statisticians began to hypothesise about the concept of missing data. Thus, the terms such as MCAR, MAR, and MNAR were formalised and proposed.</p>
+<p>In 1976, Donald B. Rubin published his work in which he introduced the early framework on missing data which was later, more commonly known as the Rubin Causal Model <span class="citation" data-cites="rubin1976inference Imbens2010">(<a href="references.html#ref-rubin1976inference" role="doc-biblioref">Rubin 1976</a>; <a href="references.html#ref-Imbens2010" role="doc-biblioref">Imbens and Rubin 2010</a>)</span>. Rubin’s work not only served as a foundation in this field but further solidified the terms such as MCAR, MAR, and MNAR. Subsequently, in 1987, two important books on missing data were published: Statistical Analysis with Missing Data <span class="citation" data-cites="little2019statistical">(<a href="references.html#ref-little2019statistical" role="doc-biblioref">Little and Rubin 2019</a>)</span> and Multiple Imputation for Nonresponse in Surveys <span class="citation" data-cites="rubin1987">(<a href="references.html#ref-rubin1987" role="doc-biblioref">Rubin 1987</a>)</span>. The former was authored by Roderick J. A. Little and Donal B. Rubin, and the latter was authored by Donald B. Rubin. Both are seasoned experts in this field.</p>
+<p>Nowadays, with the development of statistical software especially open-source statistical programming software such as R, any missing data techniques even the advanced ones are easily accessible to researchers. The understanding of missing data has become pivotal with the exploded application of machine learning and big data analytics.</p>
+</section>
+<section id="impacts-of-missing-data" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="impacts-of-missing-data"><span class="header-section-number">1.2</span> Impacts of missing data</h2>
+<p>Missing data, if left untreated and ignored, will significantly affect the results of a study and, subsequently, the overall integrity of the research. Its presence can disrupt the reliability of findings and hinder the ability to draw meaningful conclusions.</p>
+<ol type="1">
+<li><p>Reduction in statistical power.</p>
+<p>Missing data reduces the sample size, thereby lowering its statistical power to detect any meaningful results. This diminished power makes it harder to identify true effects or associations within the data. Additionally, a small sample size increases the likelihood of false negatives (Type II errors), where meaningful effects are overlooked. In extreme cases, missing data may render certain analyses impossible due to insufficient data points.</p></li>
+<li><p>Introduction of bias and distortion of estimates.</p>
+<p>If the missingness is not random, there is a high possibility of bias and distortion in the results. For example, participants may refuse to report their weight because they feel embarrassed, leading to a dataset that only includes those who are normal or underweight. Consequently, the study may draw erroneous conclusions, such as underestimating the prevalence of obesity. Bias introduced by missing data can mislead researchers and policymakers, potentially resulting in ineffective or harmful interventions.</p></li>
+<li><p>Compromised generalisability and loss of information.</p>
+<p>Missing data may compromise the generalizability of a study, especially if certain groups or subpopulations are disproportionately affected. For example, missing responses from marginalized communities may exclude their perspectives, limiting the applicability of findings. The loss of information not only reduces the completeness of the dataset but also diminishes the richness of insights that could have been derived.</p></li>
+<li><p>Increased complexity of analysis.</p>
+<p>Addressing missing data often involves complex solutions, such as multiple imputation, maximum likelihood estimation, or model-based approaches. These methods, while appropriate, require researchers to make specific assumptions, such as ignorability of the missing data mechanism. Decisions about parameters, such as the number of iterations and imputations, add layers of complexity to both the analysis and the interpretation of results. This complexity increases the potential for errors and misinterpretations, especially for researchers unfamiliar with advanced statistical techniques.</p></li>
+<li><p>Impact on replicability.</p>
+<p>Different researchers may adopt varied approaches to handle missing data, which can lead to different conclusions from the same dataset. For example, one researcher might use multiple imputation, while another opts for listwise deletion. This inconsistency makes replicability challenging and undermines the reliability of findings across studies. To mitigate this, sensitivity analyses are often necessary to assess how different methods of handling missing data affect the results, adding yet another layer of analytical effort.</p></li>
+</ol>
+<p>The impacts of missing data extend beyond those listed above. It complicates collaboration, delays project timelines, and may increase the cost of research due to the need for advanced tools and expertise. Missing data also introduces uncertainty in findings, which can reduce the confidence of stakeholders, such as policymakers or funders, in the study’s conclusions.</p>
+<p>In summary, missing data affects research at multiple levels, making analysis and result interpretation more challenging and less straightforward. Researchers must take proactive measures, such as designing robust data collection protocols and employing appropriate statistical techniques, to mitigate its impacts and preserve the integrity of their studies.</p>
+</section>
+<section id="chapter-summary" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="chapter-summary"><span class="header-section-number">1.3</span> Chapter summary</h2>
+<p>In this chapter, we explore a brief history of missing data and examine the significant impacts that missing data can have on research.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+<div id="ref-Imbens2010" class="csl-entry" role="listitem">
+Imbens, Guido W., and Donald B. Rubin. 2010. <span>“Rubin Causal Model.”</span> In <em>Microeconometrics</em>, edited by Steven N. Durlauf and Lawrence E. Blume, 229–41. London: Palgrave Macmillan UK. <a href="https://doi.org/10.1057/9780230280816_28">https://doi.org/10.1057/9780230280816_28</a>.
+</div>
+<div id="ref-little2019statistical" class="csl-entry" role="listitem">
+Little, Roderick JA, and Donald B Rubin. 2019. <em>Statistical Analysis with Missing Data</em>. Vol. 793. John Wiley &amp; Sons.
+</div>
+<div id="ref-rubin1976inference" class="csl-entry" role="listitem">
+Rubin, Donald B. 1976. <span>“Inference and Missing Data.”</span> <em>Biometrika</em> 63 (3): 581–92.
+</div>
+<div id="ref-rubin1987" class="csl-entry" role="listitem">
+———. 1987. <em>Multiple Imputation for Nonresponse in Surveys</em>. John Wiley &amp; Sons.
 </div>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
